@@ -4,13 +4,8 @@ interface ErrorAlertProps {
   message: string;
 }
 
-export const ErrorAlert: React.FC<ErrorAlertProps> = (
-  props: ErrorAlertProps
-) => {
-  const { message } = props;
-  return (
-    <div className="alert alert-danger text-center" role="alert">
-      {message}
-    </div>
-  );
-};
+export const ErrorAlert: React.FC<ErrorAlertProps> = ({ message }) => (
+  <span className="alert alert-danger text-center" role="alert" style={{display: 'block'}} >
+    {message}
+  </span>
+);

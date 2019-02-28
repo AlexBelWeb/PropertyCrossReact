@@ -1,9 +1,10 @@
 import { ActionTypes } from './actions';
 import { createReducer } from '../../services/createReducer';
+import { PropertiesLocation } from '../../types/locations.types';
 
 export interface State {
-  readonly searches: Array<any>;
-  readonly lastSearch: any | null
+  readonly searches: Array<PropertiesLocation>;
+  readonly lastSearch: PropertiesLocation | null
 }
 
 export const initialState: State = {
@@ -13,13 +14,13 @@ export const initialState: State = {
 
 
 export const reducer = createReducer(initialState, {
-  [ActionTypes.ADD_QUERY]: (state: State, payload: any) => {
+  [ActionTypes.ADD_QUERY]: (state: State, payload: PropertiesLocation) => {
     const location = payload;
-    let searches: Array<any> = [...state.searches];
+    let searches: Array<PropertiesLocation> = [...state.searches];
     if (searches.length === 5) {
       searches.pop();
     }
-    if (state.searches.findIndex((search: any) => location.id === search.id) < 0) {
+    if (state.searches.findIndex((search: PropertiesLocation) => location.id === search.id) < 0) {
       searches = [location, ...state.searches];
     }
     return {

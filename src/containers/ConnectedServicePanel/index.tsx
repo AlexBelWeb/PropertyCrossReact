@@ -1,8 +1,9 @@
-import { Store } from '../../store/root/reducer';
 import { connect } from 'react-redux';
+
+import { Store } from '../../store/root/reducer';
 import { ServicePanel } from '../../components/SearchInitialPage/ServicePanel';
 import { addQuery } from '../../store/recents/actions';
-import { setSearchStatus } from '../../store/locations/actions';
+import { resetSearch } from '../../store/locations/actions';
 
 const mapStateToProps = (store: Store) => ({
   searches: store.recents.searches,
@@ -13,7 +14,7 @@ const mapStateToProps = (store: Store) => ({
 
 const mapDispatchToProps = {
   addQuery,
-  setSearchStatus,
+  resetSearch,
 };
 
 export const ConnectedServicePanel = connect(

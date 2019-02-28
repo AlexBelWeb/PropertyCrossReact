@@ -1,25 +1,26 @@
 import * as React from 'react';
-import { ChangeEvent } from 'react';
+
 import {
-  GetLocationActionByCoords,
-  GetLocationActionByName,
+  GetLocationActionByCoords, GetLocationActionByName,
 } from '../../../store/locations/actions';
+import { PropertiesLocation } from '../../../types/locations.types';
+import { LocationCoordinates } from '../../../types/coordinates.types';
 
 export interface SearchPanelProps {
   getLocationsByName: (key: string) => GetLocationActionByName
-  getLocationsByCoords: (coords: object) => GetLocationActionByCoords
-  lastSearch: any
+  getLocationsByCoords: (coords: LocationCoordinates) => GetLocationActionByCoords
+  lastSearch: PropertiesLocation;
 }
 
 interface SearchPanelState {
-  query: any;
+  query: PropertiesLocation;
   humanQuery: string
 }
 
 export class SearchPanel extends React.Component<SearchPanelProps,
   SearchPanelState> {
   state = {
-    query: this.props.lastSearch || {},
+    query: this.props.lastSearch,
     humanQuery: '',
   };
 
@@ -30,7 +31,7 @@ export class SearchPanel extends React.Component<SearchPanelProps,
   };
 
   handleMyLocationButtonClick = () => {
-    const coords = { lat: 0, long: 0 };
+    const coords: LocationCoordinates = { lat: 0, long: 0 };
     window.navigator.geolocation.getCurrentPosition((position) => {
       coords.lat = position.coords.latitude;
       coords.long = position.coords.longitude;
@@ -39,14 +40,14 @@ export class SearchPanel extends React.Component<SearchPanelProps,
 
   };
 
-  handleSearchFormInput = (e: ChangeEvent<HTMLInputElement>) => {
+  handleSearchFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
       humanQuery: e.target.value,
     });
   };
 
   render() {
-    const { query: { longTitle = '' }, humanQuery } = this.state;
+    const { query, humanQuery } = this.state;
     return (
       <section className="jumbotron text-center">
         <div className="container">
@@ -61,7 +62,7 @@ export class SearchPanel extends React.Component<SearchPanelProps,
               <input onChange={this.handleSearchFormInput}
                      className="form-control"
                      type="text"
-                     value={longTitle || humanQuery}
+                     value={query ? query.longTitle: humanQuery}
                      placeholder="Input your location"
               />
             </div>

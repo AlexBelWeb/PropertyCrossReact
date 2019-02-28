@@ -1,28 +1,25 @@
 import * as React from 'react';
+
 import { AddQueryAction } from '../../../store/recents/actions';
-import { SetSearchStatusAction } from '../../../store/locations/actions';
+import { ResetSearchAction } from '../../../store/locations/actions';
+import { PropertiesLocation } from '../../../types/locations.types';
 
 interface LocationsListProps {
-  locations: Array<any>
-  addQuery: (location: object) => AddQueryAction
-  setSearchStatus: (status: string) => SetSearchStatusAction
+  locations: Array<PropertiesLocation>
+  addQuery: (location: PropertiesLocation) => AddQueryAction
+  resetSearch: () => ResetSearchAction
 }
 
-interface LocationsListState {
+export class LocationsList extends React.Component<LocationsListProps> {
 
-}
-
-export class LocationsList extends React.Component<LocationsListProps, LocationsListState> {
-
-  handleLocationClick = (location: object) => {
+  handleLocationClick = (location: PropertiesLocation) => {
     this.props.addQuery(location);
-    this.props.setSearchStatus('init');
+    this.props.resetSearch();
     //TODO: getProperties
   };
 
-  render() {
-    const locations = this.props.locations.map(location => {
-      return (
+  renderLocations = (locations: Array<PropertiesLocation>) =>
+    locations.map(location => (
         <button className="list-group-item list-group-item-action"
                 key={location.id}
                 onClick={() => {
@@ -30,20 +27,23 @@ export class LocationsList extends React.Component<LocationsListProps, Locations
                 }}>
           {location.longTitle}
         </button>
-      );
-    });
+      )
+    );
+
+  render() {
+    const { locations } = this.props;
 
     return (
-      <div>
+      <>
         <div className="row">
           <div className="col text-xs-center text-sm-center pb-2">
             <h3>Available locations</h3>
           </div>
         </div>
         <div className="list-group mb-3">
-          {locations}
+          {this.renderLocations(locations)}
         </div>
-      </div>
+      </>
     );
   }
 }

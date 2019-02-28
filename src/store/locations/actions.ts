@@ -1,5 +1,7 @@
-import { nestoria } from '../../services/api';
 import { AxiosPromise } from 'axios';
+
+import { nestoria } from '../../services/api';
+import { LocationCoordinates } from '../../types/coordinates.types';
 
 export enum ActionTypes {
   GET_LOCATIONS_BY_NAME = 'locations/GET_LOCATIONS_BY_NAME',
@@ -10,7 +12,7 @@ export enum ActionTypes {
   GET_LOCATIONS_BY_COORDS_REQUEST = 'locations/GET_LOCATIONS_BY_COORDS_REQUEST',
   GET_LOCATIONS_BY_COORDS_SUCCESS = 'locations/GET_LOCATIONS_BY_COORDS_SUCCESS',
   GET_LOCATIONS_BY_COORDS_FAILURE = 'locations/GET_LOCATIONS_BY_COORDS_FAILURE',
-  SET_SEARCH_STATUS = 'locations/SET_SEARCH_STATUS'
+  RESET_SEARCH = 'locations/RESET_SEARCH'
 }
 
 export interface GetLocationActionByName {
@@ -31,28 +33,20 @@ export interface GetLocationActionByCoords {
   payload?: any
 }
 
-export interface SetSearchStatusAction {
-  type: ActionTypes.SET_SEARCH_STATUS
-  payload: string
+export interface ResetSearchAction {
+  type: ActionTypes.RESET_SEARCH
 }
 
-export function getLocationsByName(placeName: string): GetLocationActionByName {
-  return {
-    type: ActionTypes.GET_LOCATIONS_BY_NAME,
-    request: nestoria.get('/locations/searchByName', { params: { placeName } }),
-  };
-}
+export const getLocationsByName = (placeName: string): GetLocationActionByName => ({
+  type: ActionTypes.GET_LOCATIONS_BY_NAME,
+  request: nestoria.get('/locations/searchByName', { params: { placeName } }),
+});
 
-export function getLocationsByCoords(coords: object): GetLocationActionByCoords {
-  return {
-    type: ActionTypes.GET_LOCATIONS_BY_COORDS,
-    request: nestoria.get('/locations/searchByCoordinates', { params: coords }),
-  };
-}
+export const getLocationsByCoords = (coords: LocationCoordinates): GetLocationActionByCoords => ({
+  type: ActionTypes.GET_LOCATIONS_BY_COORDS,
+  request: nestoria.get('/locations/searchByCoordinates', { params: coords }),
+});
 
-export function setSearchStatus(status: string): SetSearchStatusAction {
-  return {
-    type: ActionTypes.SET_SEARCH_STATUS,
-    payload: status,
-  };
-}
+export const resetSearch = (): ResetSearchAction => ({
+  type: ActionTypes.RESET_SEARCH,
+});

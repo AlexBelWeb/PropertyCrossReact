@@ -7,13 +7,11 @@ interface FetchAction {
   payload?: any;
 }
 
-export const requestApiMiddleware = () => (
-  next: Dispatch,
-) => async (action: FetchAction) => {
+export const requestApiMiddleware = () => (next: Dispatch) => async (
+  action: FetchAction
+) => {
   if (action.request) {
-    next({
-      type: `${action.type}_REQUEST`,
-    });
+    next({ type: `${action.type}_REQUEST`,});
     let modAction;
     try {
       const { data } = await action.request;
@@ -23,10 +21,14 @@ export const requestApiMiddleware = () => (
         payload: data,
       };
     } catch (error) {
-      modAction = { ...action, type: `${action.type}_FAILURE`, payload:  error.response.data };
+      modAction = {
+        ...action,
+        type: `${action.type}_FAILURE`,
+        payload: error.response.data,
+      };
     }
     return next(modAction);
-  } else {
-    return next(action);
   }
+
+  return next(action);
 };
