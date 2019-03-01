@@ -1,0 +1,46 @@
+import { ActionTypes } from './actions';
+import { createReducer } from '../../services/createReducer';
+import { PropertiesLocation } from '../../types/locations.types';
+import { SearchStatuses } from '../../types/searchStatus.types';
+
+export interface State {
+  locations: Array<PropertiesLocation>,
+  searchStatus: SearchStatuses.INIT | SearchStatuses.LOADING | SearchStatuses.SUCCESS | SearchStatuses.FAILURE
+  errorMessage: string
+}
+
+export const initialState: State = {
+  locations: [],
+  searchStatus: SearchStatuses.INIT,
+  errorMessage: '',
+};
+
+const loadingActionsHandler = (state: State) => ({
+  ...state,
+  error: null,
+  searchStatus: SearchStatuses.LOADING,
+  errorMessage: '',
+});
+
+const successActionsHandler = (state: State, locations: Array<PropertiesLocation>) => ({
+  ...state,
+  searchStatus: SearchStatuses.SUCCESS,
+  locations,
+});
+
+const failureActionsHandler =  (state: State, errorMessage: string) => ({
+  ...state,
+  searchStatus: SearchStatuses.FAILURE,
+  errorMessage,
+});
+
+export const reducer = createReducer(initialState, {
+  [ActionTypes.GET_LOCATIONS_BY_NAME_REQUEST]: loadingActionsHandler,
+  [ActionTypes.GET_LOCATIONS_BY_COORDS_REQUEST]: loadingActionsHandler,
+  [ActionTypes.GET_LOCATIONS_BY_NAME_SUCCESS]: successActionsHandler,
+  [ActionTypes.GET_LOCATIONS_BY_COORDS_SUCCESS]: successActionsHandler,
+  [ActionTypes.GET_LOCATIONS_BY_NAME_FAILURE]: failureActionsHandler,
+  [ActionTypes.GET_LOCATIONS_BY_COORDS_FAILURE]: failureActionsHandler,
+  [ActionTypes.RESET_SEARCH]: () => initialState,
+});
+
