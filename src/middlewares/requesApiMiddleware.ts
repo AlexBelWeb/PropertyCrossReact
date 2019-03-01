@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { AxiosPromise } from 'axios';
 
 interface FetchAction {
-  type: any;
+  type: string;
   request: AxiosPromise;
   payload?: any;
 }

@@ -18,8 +18,8 @@ export class LocationsList extends React.Component<LocationsListProps> {
     //TODO: getProperties
   };
 
-  renderLocations = (locations: Array<PropertiesLocation>) =>
-    locations.map(location => (
+  renderLocations = () =>
+    this.props.locations.map(location => (
         <button className="list-group-item list-group-item-action"
                 key={location.id}
                 onClick={() => {
@@ -31,8 +31,6 @@ export class LocationsList extends React.Component<LocationsListProps> {
     );
 
   render() {
-    const { locations } = this.props;
-
     return (
       <>
         <div className="row">
@@ -41,7 +39,7 @@ export class LocationsList extends React.Component<LocationsListProps> {
           </div>
         </div>
         <div className="list-group mb-3">
-          {this.renderLocations(locations)}
+          {this.renderLocations()}
         </div>
       </>
     );
