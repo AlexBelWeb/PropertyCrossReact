@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import {
   GetLocationActionByCoords, GetLocationActionByName,
-} from '../../../store/locations/actions';
-import { PropertiesLocation } from '../../../types/locations.types';
-import { LocationCoordinates } from '../../../types/coordinates.types';
+} from '@app/store/locations/actions';
+import { PropertiesLocation } from '@app/types/locations.types';
+import { LocationCoordinates } from '@app/types/coordinates.types';
 
 export interface SearchPanelProps {
   getLocationsByName: (key: string) => GetLocationActionByName
@@ -25,8 +25,9 @@ export class SearchPanel extends React.Component<SearchPanelProps,
   };
 
   handleGoButtonClick = () => {
-    const { humanQuery } = this.state;
-    const key = humanQuery.split(/[\s,]+/).join('_').toLowerCase();
+    const { humanQuery, query } = this.state;
+    const searchString = query ? query.longTitle : humanQuery;
+    const key = searchString.split(/[\s,]+/).join('_').toLowerCase();
     this.props.getLocationsByName(key);
   };
 

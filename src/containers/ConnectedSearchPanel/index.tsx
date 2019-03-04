@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import {
   getLocationsByName,
   getLocationsByCoords,
-} from '../../store/locations/actions';
-import { SearchPanel } from '../../components/SearchInitialPage/SearchPanel';
-import { Store } from '../../store/root/reducer';
+} from '@app/store/locations/actions';
+import { SearchPanel } from '@app/components/SearchInitialPage/SearchPanel';
+import { Store } from '@app/store/root/reducer';
 
 const mapStateToProps = (store: Store) => ({
   lastSearch: store.recents.lastSearch,

@@ -1,4 +1,4 @@
-import { PropertiesLocation } from '../../types/locations.types';
+import { PropertiesLocation } from '@app/types/locations.types';
 
 export enum ActionTypes {
   ADD_QUERY = 'recents/ADD_QUERY'

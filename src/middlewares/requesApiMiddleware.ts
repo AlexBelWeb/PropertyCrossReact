@@ -14,7 +14,7 @@ export const requestApiMiddleware = () => (next: Dispatch) => async (
     next({ type: `${action.type}_REQUEST`,});
     let modAction;
     try {
-      const { data } = await action.request;
+      const {data} = await action.request;
       modAction = {
         ...action,
         type: `${action.type}_SUCCESS`,
@@ -26,6 +26,7 @@ export const requestApiMiddleware = () => (next: Dispatch) => async (
         type: `${action.type}_FAILURE`,
         payload: error.response.data,
       };
+
     }
     return next(modAction);
   }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PropertiesLocation } from '../../../types/locations.types';
+import { PropertiesLocation } from '@app/types/locations.types';
 
 interface RecentSearchesListProps {
   searches: Array<PropertiesLocation>;

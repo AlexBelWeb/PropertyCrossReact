@@ -1,7 +1,7 @@
-import { ActionTypes } from './actions';
-import { createReducer } from '../../services/createReducer';
-import { PropertiesLocation } from '../../types/locations.types';
-import { SearchStatuses } from '../../types/searchStatus.types';
+import { ActionTypes } from '@app/store/locations/actions';
+import { createReducer } from '@app/services/createReducer';
+import { PropertiesLocation } from '@app/types/locations.types';
+import { SearchStatuses } from '@app/types/searchStatus.types';
 
 export interface State {
   locations: Array<PropertiesLocation>,
@@ -17,7 +17,6 @@ export const initialState: State = {
 
 const loadingActionsHandler = (state: State) => ({
   ...state,
-  error: null,
   searchStatus: SearchStatuses.LOADING,
   errorMessage: '',
 });
@@ -28,7 +27,7 @@ const successActionsHandler = (state: State, locations: Array<PropertiesLocation
   locations,
 });
 
-const failureActionsHandler =  (state: State, errorMessage: string) => ({
+const failureActionsHandler = (state: State, errorMessage: string) => ({
   ...state,
   searchStatus: SearchStatuses.FAILURE,
   errorMessage,

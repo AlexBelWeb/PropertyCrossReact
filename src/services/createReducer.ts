@@ -1,7 +1,8 @@
 import { State as LocationState } from '../store/locations/reducer';
 import { State as RecentsState } from '../store/recents/reducer';
+import { State as PropertiesStore } from '../store/properties/reducer'
 
-type InitialState = LocationState | RecentsState
+type InitialState = LocationState | RecentsState | PropertiesStore
 
 export const createReducer = (initialState: InitialState, reducerMap: any) => (
   state = initialState,
