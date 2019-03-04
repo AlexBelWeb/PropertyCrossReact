@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { RecentSearchesList } from '../RecentSearchesList';
-import { LocationsList } from '../LocationsList';
-import { ErrorAlert } from '../ErrorAlert';
-import { Spinner } from '../../common/Spinner';
+import { RecentSearchesList } from '@app/components/SearchInitialPage/RecentSearchesList';
+import { LocationsList } from '@app/components/SearchInitialPage/LocationsList';
+import { ErrorAlert } from '@app/components/SearchInitialPage/ErrorAlert';
+import { Spinner } from '@app/components/common/Spinner';
 import { AddQueryAction } from '@app/store/recents/actions';
 import {
   ResetSearchAction,
