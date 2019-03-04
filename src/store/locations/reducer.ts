@@ -1,7 +1,7 @@
-import { ActionTypes } from './actions';
-import { createReducer } from '../../services/createReducer';
-import { PropertiesLocation } from '../../types/locations.types';
-import { SearchStatuses } from '../../types/searchStatus.types';
+import { ActionTypes } from '@app/store/locations/actions';
+import { createReducer } from '@app/services/createReducer';
+import { PropertiesLocation } from '@app/types/locations.types';
+import { SearchStatuses } from '@app/types/searchStatus.types';
 
 export interface State {
   locations: Array<PropertiesLocation>,

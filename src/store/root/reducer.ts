@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import * as recents from '../recents/reducer';
-import * as locations from '../locations/reducer'
-import * as properties from '../properties/reducer'
+import * as recents from '@app/store/recents/reducer';
+import * as locations from '@app/store/locations/reducer'
+import * as properties from '@app/store/properties/reducer'
 
 export interface Store {
   recents: recents.State;

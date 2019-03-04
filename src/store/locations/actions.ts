@@ -1,7 +1,8 @@
 import { AxiosPromise } from 'axios';
 
-import { nestoria } from '../../services/api';
-import { LocationCoordinates } from '../../types/coordinates.types';
+import { nestoria } from '@app/services/api';
+import { LocationCoordinates } from '@app/types/coordinates.types';
+import { LocationsResponse } from '@app/types/api.response.types';
 
 export enum ActionTypes {
   GET_LOCATIONS_BY_NAME = 'locations/GET_LOCATIONS_BY_NAME',
@@ -21,7 +22,7 @@ export interface GetLocationActionByName {
     | ActionTypes.GET_LOCATIONS_BY_NAME_SUCCESS
     | ActionTypes.GET_LOCATIONS_BY_NAME_FAILURE
   request: AxiosPromise
-  payload?: any
+  payload?: LocationsResponse
 }
 
 export interface GetLocationActionByCoords {

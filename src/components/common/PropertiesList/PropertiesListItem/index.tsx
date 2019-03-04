@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { PropertyItem } from '../../../../types/property.types';
+import { PropertyItem } from '@app/types/property.types';
 
 interface PropertiesListItemProps {
   property: PropertyItem

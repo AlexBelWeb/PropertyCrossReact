@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Spinner } from '../common/Spinner';
+import { Spinner } from '@app/components/common/Spinner';
 
 export const WithLoading = (Component: React.ComponentType) => (props: any) => (
   <>

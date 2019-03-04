@@ -1,6 +1,6 @@
-import { ActionTypes } from './actions';
-import { createReducer } from '../../services/createReducer';
-import { PropertiesLocation } from '../../types/locations.types';
+import { ActionTypes } from '@app/store/recents/actions';
+import { createReducer } from '@app/services/createReducer';
+import { PropertiesLocation } from '@app/types/locations.types';
 
 export interface State {
   readonly searches: Array<PropertiesLocation>;

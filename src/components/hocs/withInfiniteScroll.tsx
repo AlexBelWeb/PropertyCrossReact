@@ -3,11 +3,11 @@ import * as React from 'react';
 export const WithInfiniteScroll = (Component: React.ComponentType) =>
   class WithInfiniteScroll extends React.Component<any> {
     componentDidMount() {
-      window.addEventListener('scroll', this.onScroll, false);
+      window.addEventListener('scroll', this.onScroll);
     }
 
     componentWillUnmount() {
-      window.removeEventListener('scroll', this.onScroll, false);
+      window.removeEventListener('scroll', this.onScroll);
     }
 
     onScroll = () => {

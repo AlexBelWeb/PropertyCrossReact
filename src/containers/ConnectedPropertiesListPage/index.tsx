@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { Store } from '../../store/root/reducer';
-import { getProperties, resetProperties } from '../../store/properties/actions';
-import { PropertiesListPage } from '../../components/PropertiesListPage';
+import { Store } from '@app/store/root/reducer';
+import { getProperties, resetProperties } from '@app/store/properties/actions';
+import { PropertiesListPage } from '@app/components/PropertiesListPage';
 
 const mapStateToProps = (store: Store) => ({
   page: store.properties.page,

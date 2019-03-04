@@ -1,7 +1,8 @@
-import { PropertyItem } from '../../types/property.types';
-import { createReducer } from '../../services/createReducer';
-import { ActionTypes } from './actions';
-import { PropertiesLocation } from '../../types/locations.types';
+import { PropertyItem } from '@app/types/property.types';
+import { createReducer } from '@app/services/createReducer';
+import { ActionTypes } from '@app/store/properties/actions';
+import { PropertiesLocation } from '@app/types/locations.types';
+import { PropertiesResponse } from '@app/types/api.response.types';
 
 export interface State {
   properties: Array<PropertyItem>;
@@ -23,13 +24,6 @@ export const initialState: State = {
   page: 0,
 };
 
-interface PropertiesResponse {
-  properties: Array<PropertyItem>;
-  location: PropertiesLocation;
-  hasMore: boolean;
-  totalResults: number;
-  page: number;
-}
 
 const loadingGetPropertiesHandler = (state: State) => ({
   ...state,

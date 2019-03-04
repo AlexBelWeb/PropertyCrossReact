@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import {
   GetLocationActionByCoords, GetLocationActionByName,
-} from '../../../store/locations/actions';
-import { PropertiesLocation } from '../../../types/locations.types';
-import { LocationCoordinates } from '../../../types/coordinates.types';
+} from '@app/store/locations/actions';
+import { PropertiesLocation } from '@app/types/locations.types';
+import { LocationCoordinates } from '@app/types/coordinates.types';
 
 export interface SearchPanelProps {
   getLocationsByName: (key: string) => GetLocationActionByName

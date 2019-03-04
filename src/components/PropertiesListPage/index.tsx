@@ -2,16 +2,16 @@ import * as React from 'react';
 import { compose } from 'recompose';
 import { match } from 'react-router';
 
-import { PropertyItem } from '../../types/property.types';
+import { PropertyItem } from '@app/types/property.types';
 import {
   GetPropertiesAction,
   ResetPropertiesAction,
-} from '../../store/properties/actions';
+} from '@app/store/properties/actions';
 import { WithInfiniteScroll } from '../hocs/withInfiniteScroll';
 import { WithLoading } from '../hocs/withLoading';
 import { PropertiesList } from '../common/PropertiesList';
 
-import { PropertiesLocation } from '../../types/locations.types';
+import { PropertiesLocation } from '@app/types/locations.types';
 
 interface RouteParams {
   placeName: string;

@@ -1,6 +1,6 @@
 import { AxiosPromise } from 'axios';
 
-import { nestoria } from '../../services/api';
+import { nestoria } from '@app/services/api';
 
 export enum ActionTypes {
   GET_PROPERTIES = 'properties/GET_PROPERTIES_BY_NAME',

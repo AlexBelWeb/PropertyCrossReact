@@ -1,5 +1,8 @@
+const path = require('path');
+
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   entry: './src/index.tsx',
@@ -10,7 +13,12 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
+    alias: {
+      "@app": path.resolve(__dirname, "src/"),
+    }
+
   },
+
   module: {
     rules: [
       {

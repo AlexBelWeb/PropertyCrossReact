@@ -4,12 +4,12 @@ import { RecentSearchesList } from '../RecentSearchesList';
 import { LocationsList } from '../LocationsList';
 import { ErrorAlert } from '../ErrorAlert';
 import { Spinner } from '../../common/Spinner';
-import { AddQueryAction } from '../../../store/recents/actions';
+import { AddQueryAction } from '@app/store/recents/actions';
 import {
   ResetSearchAction,
-} from '../../../store/locations/actions';
-import { PropertiesLocation } from '../../../types/locations.types';
-import { SearchStatuses } from '../../../types/searchStatus.types';
+} from '@app/store/locations/actions';
+import { PropertiesLocation } from '@app/types/locations.types';
+import { SearchStatuses } from '@app/types/searchStatus.types';
 
 export interface ServicePanelProps {
   searches: Array<PropertiesLocation>;

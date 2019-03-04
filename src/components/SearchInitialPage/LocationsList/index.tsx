@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { AddQueryAction } from '../../../store/recents/actions';
-import { ResetSearchAction } from '../../../store/locations/actions';
-import { PropertiesLocation } from '../../../types/locations.types';
+import { AddQueryAction } from '@app/store/recents/actions';
+import { ResetSearchAction } from '@app/store/locations/actions';
+import { PropertiesLocation } from '@app/types/locations.types';
 import { Link } from 'react-router-dom';
 
 interface LocationsListProps {
