@@ -25,8 +25,9 @@ export class SearchPanel extends React.Component<SearchPanelProps,
   };
 
   handleGoButtonClick = () => {
-    const { humanQuery } = this.state;
-    const key = humanQuery.split(/[\s,]+/).join('_').toLowerCase();
+    const { humanQuery, query } = this.state;
+    const searchString = query ? query.longTitle : humanQuery;
+    const key = searchString.split(/[\s,]+/).join('_').toLowerCase();
     this.props.getLocationsByName(key);
   };
 

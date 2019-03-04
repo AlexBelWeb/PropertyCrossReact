@@ -17,7 +17,6 @@ export const initialState: State = {
 
 const loadingActionsHandler = (state: State) => ({
   ...state,
-  error: null,
   searchStatus: SearchStatuses.LOADING,
   errorMessage: '',
 });
@@ -28,7 +27,7 @@ const successActionsHandler = (state: State, locations: Array<PropertiesLocation
   locations,
 });
 
-const failureActionsHandler =  (state: State, errorMessage: string) => ({
+const failureActionsHandler = (state: State, errorMessage: string) => ({
   ...state,
   searchStatus: SearchStatuses.FAILURE,
   errorMessage,

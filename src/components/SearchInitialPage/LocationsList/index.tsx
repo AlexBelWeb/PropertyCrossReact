@@ -3,6 +3,7 @@ import * as React from 'react';
 import { AddQueryAction } from '../../../store/recents/actions';
 import { ResetSearchAction } from '../../../store/locations/actions';
 import { PropertiesLocation } from '../../../types/locations.types';
+import { Link } from 'react-router-dom';
 
 interface LocationsListProps {
   locations: Array<PropertiesLocation>
@@ -15,7 +16,6 @@ export class LocationsList extends React.Component<LocationsListProps> {
   handleLocationClick = (location: PropertiesLocation) => {
     this.props.addQuery(location);
     this.props.resetSearch();
-    //TODO: getProperties
   };
 
   renderLocations = () =>
@@ -25,7 +25,7 @@ export class LocationsList extends React.Component<LocationsListProps> {
                 onClick={() => {
                   this.handleLocationClick(location);
                 }}>
-          {location.longTitle}
+          <Link to={`/${location.placeName}/properties`}>{location.longTitle}</Link>
         </button>
       )
     );

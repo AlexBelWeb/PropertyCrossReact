@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RecentSearchesList } from '../RecentSearchesList';
 import { LocationsList } from '../LocationsList';
 import { ErrorAlert } from '../ErrorAlert';
-import { Spinner } from '../Spinner/Spinner';
+import { Spinner } from '../../common/Spinner';
 import { AddQueryAction } from '../../../store/recents/actions';
 import {
   ResetSearchAction,
