@@ -12,8 +12,10 @@ export const WithInfiniteScroll = (Component: React.ComponentType) =>
 
     onScroll = () => {
       if (
-        (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 20) &&
-        this.props.hasMore && !this.props.isLoading
+        window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 20 &&
+        this.props.hasMore &&
+        !this.props.isLoading
       ) {
         this.props.getData();
       }

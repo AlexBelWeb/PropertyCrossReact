@@ -1,8 +1,13 @@
-import { State as LocationState } from '../store/locations/reducer';
-import { State as RecentsState } from '../store/recents/reducer';
-import { State as PropertiesStore } from '../store/properties/reducer'
+import { State as LocationState } from '@app/store/locations/reducer';
+import { State as RecentsState } from '@app/store/recents/reducer';
+import { State as PropertiesState } from '@app/store/properties/reducer';
+import { State as FavoritesState } from '@app/store/favorites/reducer';
 
-type InitialState = LocationState | RecentsState | PropertiesStore
+type InitialState =
+  | LocationState
+  | RecentsState
+  | PropertiesState
+  | FavoritesState;
 
 export const createReducer = (initialState: InitialState, reducerMap: any) => (
   state = initialState,

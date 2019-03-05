@@ -10,3 +10,4 @@ export type PropertiesResponse = {
 }
 
 export type LocationsResponse = Array<PropertiesLocation>
+

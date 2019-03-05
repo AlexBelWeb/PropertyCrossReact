@@ -1,3 +1,5 @@
+import { PropertiesLocation } from '@app/types/locations.types';
+
 export type PropertyItem = {
   id: string;
   bathroomNumber: number;
@@ -32,4 +34,5 @@ export type PropertyItem = {
   title: string;
   updatedInDays: number;
   updatedInDaysFormatted: string;
+  location: PropertiesLocation;
 }

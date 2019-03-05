@@ -6,6 +6,7 @@ import { PropertiesResponse } from '@app/types/api.response.types';
 
 export interface State {
   properties: Array<PropertyItem>;
+  property: PropertyItem | null;
   location: PropertiesLocation | null;
   hasMore: boolean;
   totalResults: number;
@@ -16,6 +17,7 @@ export interface State {
 
 export const initialState: State = {
   properties: [],
+  property: null,
   location: null,
   hasMore: false,
   totalResults: 0,
@@ -24,8 +26,7 @@ export const initialState: State = {
   page: 0,
 };
 
-
-const loadingGetPropertiesHandler = (state: State) => ({
+const loadingHandler = (state: State) => ({
   ...state,
   errorMessage: '',
   loading: true,
@@ -44,7 +45,16 @@ const successGetPropertiesHandler = (
   totalResults,
 });
 
-const failureGetPropertiesHandler = (state: State, errorMessage: string) => ({
+const successGetPropertyItemHandler = (
+  state: State,
+  property: PropertyItem
+) => ({
+  ...state,
+  property,
+  loading: false,
+});
+
+const failureHandler = (state: State, errorMessage: string) => ({
   ...state,
   loading: false,
   errorMessage,
@@ -53,8 +63,11 @@ const failureGetPropertiesHandler = (state: State, errorMessage: string) => ({
 const resetPropertiesHandler = () => initialState;
 
 export const reducer = createReducer(initialState, {
-  [ActionTypes.GET_PROPERTIES_REQUEST]: loadingGetPropertiesHandler,
+  [ActionTypes.GET_PROPERTIES_REQUEST]: loadingHandler,
+  [ActionTypes.GET_PROPERTY_ITEM_REQUEST]: loadingHandler,
   [ActionTypes.GET_PROPERTIES_SUCCESS]: successGetPropertiesHandler,
-  [ActionTypes.GET_PROPERTIES_FAILURE]: failureGetPropertiesHandler,
+  [ActionTypes.GET_PROPERTY_ITEM_SUCCESS]: successGetPropertyItemHandler,
+  [ActionTypes.GET_PROPERTIES_FAILURE]: failureHandler,
+  [ActionTypes.GET_PROPERTY_ITEM_FAILURE]: failureHandler,
   [ActionTypes.RESET_PROPERTIES]: resetPropertiesHandler,
 });

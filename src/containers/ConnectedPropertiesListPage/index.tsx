@@ -15,7 +15,10 @@ const mapStateToProps = (store: Store) => ({
 
 const mapDispatchToProps = {
   getProperties,
-  resetProperties
+  resetProperties,
 };
 
-export const ConnectedPropertiesListPage = connect(mapStateToProps, mapDispatchToProps)(PropertiesListPage);
+export const ConnectedPropertiesListPage = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PropertiesListPage);

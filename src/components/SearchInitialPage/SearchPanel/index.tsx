@@ -9,11 +9,11 @@ import { LocationCoordinates } from '@app/types/coordinates.types';
 export interface SearchPanelProps {
   getLocationsByName: (key: string) => GetLocationActionByName
   getLocationsByCoords: (coords: LocationCoordinates) => GetLocationActionByCoords
-  lastSearch: PropertiesLocation;
+  lastSearch: PropertiesLocation | null;
 }
 
 interface SearchPanelState {
-  query: PropertiesLocation;
+  query: PropertiesLocation | null;
   humanQuery: string
 }
 
@@ -61,6 +61,7 @@ export class SearchPanel extends React.Component<SearchPanelProps,
           <div className="row">
             <div className="col-xs-12 col-sm-6 offset-sm-3">
               <input onChange={this.handleSearchFormInput}
+                     onFocus={()=>this.setState({query: null})}
                      className="form-control"
                      type="text"
                      value={query ? query.longTitle: humanQuery}
