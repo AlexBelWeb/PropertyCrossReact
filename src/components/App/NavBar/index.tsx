@@ -1,10 +1,13 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 export const NavBar: React.FC = () => (
   <nav className="navbar navbar-dark bg-dark">
-    <a className="navbar-brand" href="#">
+    <Link to="/" className="navbar-brand" href="#">
       PropertyCrossReact
-    </a>
-    <button className="btn btn-info my-2 my-sm-0">Faves</button>
+    </Link>
+    <Link to="/faves">
+      <button className="btn btn-info my-2 my-sm-0">Faves</button>
+    </Link>
   </nav>
 );

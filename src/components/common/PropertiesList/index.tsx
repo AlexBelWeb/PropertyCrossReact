@@ -9,7 +9,7 @@ interface PropertiesListProps {
 
 const renderProperties = (properties: Array<PropertyItem>) =>
   properties.map(property => (
-    <div className="col-xs-12 col-sm-3" key={property.id}>
+    <div className="col-xs-12 col-sm-4" key={property.id}>
       <PropertiesListItem property={property} />
     </div>
   ));

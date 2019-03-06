@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import { PropertiesLocation } from '@app/types/locations.types';
 
@@ -8,9 +9,13 @@ interface RecentSearchesListProps {
 
 const renderRecents = (searches: Array<PropertiesLocation>) =>
   searches.map(query => (
-    <button className="list-group-item list-group-item-action" key={query.id}>
+    <Link
+      to={`/${query.placeName}/properties`}
+      className="list-group-item list-group-item-action"
+      key={query.id}
+    >
       {query.longTitle}
-    </button>
+    </Link>
   ));
 
 const noRecents = (
