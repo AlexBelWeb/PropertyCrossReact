@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { match } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 
 import { PropertyItem } from '@app/types/property.types';
 import {
@@ -19,7 +19,7 @@ interface RouteParams {
   id: string;
 }
 
-export interface PropertyPageProps {
+export interface PropertyPageProps extends RouteComponentProps<RouteParams>{
   favorites: FavoritesStorage;
   property: PropertyItem;
   loading: boolean;
@@ -27,7 +27,6 @@ export interface PropertyPageProps {
   resetProperty: () => ResetPropertyAction;
   addToFavorites: (property: PropertyItem) => AddToFavoritesAction;
   removeFromFavorites: (propertyId: string) => RemoveFromFavoritesAction;
-  match: match<RouteParams>;
 }
 
 export class PropertyPage extends React.Component<PropertyPageProps> {

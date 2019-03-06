@@ -12,7 +12,7 @@ interface LocationsListProps {
 }
 
 export class LocationsList extends React.Component<LocationsListProps> {
-  handleLocationClick = (location: PropertiesLocation) => {
+  handleLocationClick = (location: PropertiesLocation) => () => {
     this.props.addQuery(location);
     this.props.resetSearch();
   };
@@ -23,12 +23,11 @@ export class LocationsList extends React.Component<LocationsListProps> {
         to={`/${location.placeName}/properties`}
         className="list-group-item list-group-item-action"
         key={location.id}
-        onClick={() => {
-          this.handleLocationClick(location);
-        }}
+        onClick={this.handleLocationClick(location)}
       >
         {location.longTitle}
       </Link>
+
     ));
 
   render() {

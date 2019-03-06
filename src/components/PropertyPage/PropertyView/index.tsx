@@ -76,5 +76,6 @@ export const PropertyView: React.FC<PropertyViewProps> = ({
         </div>
       </>
     );
-  } else return <Spinner />;
+  }
+  return <Spinner />;
 };
